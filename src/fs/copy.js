@@ -38,7 +38,7 @@ export const copy = async () => {
 
   access(sourceFolder, (err) => {
     if (err && err.code === "ENOENT") {
-      throw Error("Source folder doesn't exists");
+      throw Error('FS operation failed';
     }
     access(destinationFolder, (err) => {
       if (err && err.code === "ENOENT") {
@@ -64,7 +64,7 @@ export const copy = async () => {
             }
           );
         }); */ //remove
-        throw Error("Destination folder already exists"); //remove
+        throw Error('FS operation failed'); //remove
       }
     });
   });

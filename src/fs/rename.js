@@ -11,12 +11,12 @@ export const rename = async () => {
   console.log(newPath);
   access(oldPath, (err) => {
     if (err && err.code === 'ENOENT') {
-      throw Error("File wrongFilename.txt doesn't exist");
+      throw Error('FS operation failed');
     }
     console.log(1);
     access(newPath, (err) => {
       if (err === null) {
-        throw Error('File properFilename.md already exists');
+        throw Error('FS operation failed');
       }
       console.log(2);
       fs.rename(oldPath, newPath, (err) => {
