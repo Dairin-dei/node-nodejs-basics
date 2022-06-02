@@ -1,3 +1,31 @@
+import fs, { access } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
 export const rename = async () => {
-    // Write your code here 
+  const fileName = fileURLToPath(import.meta.url);
+  const dirName = dirname(fileName);
+  const oldPath = join(dirName, 'files', 'wrongFilename.txt');
+  const newPath = join(dirName, 'files', 'properFilename.md');
+  console.log(oldPath);
+  console.log(newPath);
+  access(oldPath, (err) => {
+    if (err && err.code === 'ENOENT') {
+      throw Error("File wrongFilename.txt doesn't exist");
+    }
+    console.log(1);
+    access(newPath, (err) => {
+      if (err === null) {
+        throw Error('File properFilename.md already exists');
+      }
+      console.log(2);
+      fs.rename(oldPath, newPath, (err) => {
+        if (err) {
+          throw Error(err.message);
+        }
+      });
+    });
+  });
 };
+
+rename();
