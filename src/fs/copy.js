@@ -38,7 +38,7 @@ export const copy = async () => {
 
   access(sourceFolder, (err) => {
     if (err && err.code === "ENOENT") {
-      throw Error('FS operation failed';
+      throw Error('FS operation failed');
     }
     access(destinationFolder, (err) => {
       if (err && err.code === "ENOENT") {
