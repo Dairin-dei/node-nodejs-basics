@@ -1,5 +1,4 @@
 import { createReadStream, createWriteStream } from 'fs';
-import { pipeline } from 'stream';
 import { createGzip } from 'zlib';
 import { fileURLToPath } from 'url';
 import { join, dirname } from 'path';
